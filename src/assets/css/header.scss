@@ -3,6 +3,7 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html, body {
@@ -13,9 +14,6 @@ html, body {
   display: flex;
   width: 100%;
   flex-flow: column;
-  @media (max-width: 767px) {
-
-  }
 }
 
 .header {
