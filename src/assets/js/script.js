@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
-
-
     let rentalPeriodInput = document.querySelector('.rental-period__input')
     calculatorRentalPeriod(rentalPeriodInput)
     rentalPeriodInput.addEventListener('change', event => {
@@ -70,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 form.querySelector('.short-form__submit').textContent = 'Successfully sent'
                 form.querySelector('.short-form__submit').classList.add('short-form__submit_correct')
                 form.querySelector('.short-form__input_textarea').value = placeholder
+                form.querySelector('.short-form__input_textarea').classList.remove('short-form__input_textarea_active')
                 setTimeout(() => {
                     form.querySelector('.short-form__submit').textContent = buttonText
                     form.querySelector('.short-form__submit').classList.remove('short-form__submit_correct')
