@@ -27,11 +27,43 @@ html, body {
   @media (max-width: 769px) {
     margin: 0;
     width: 100vw;
-    padding: 24px calc((100% - 360px) / 2) 0;
+    padding: 24px calc((100% - 360px) / 2) 10px;
     position: fixed;
     z-index: 10;
     background: #FFFFFF;
     border-bottom: 1px solid #71c9ba;
+  }
+}
+
+.header__logo-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.header__logo{
+  width: 75px;
+  height: 67px;
+  margin-right: 25px;
+  @media (max-width: 769px) {
+    width: 50px;
+    height: 43px;
+    margin-right: 8px;
+  }
+}
+
+.header__logo-text{
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+
+  color: #71C9BA;
+  span{
+    color: #FF9900;
+  }
+  @media (max-width: 769px) {
+    font-size: 13px;
   }
 }
 

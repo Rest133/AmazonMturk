@@ -50,17 +50,33 @@ document.addEventListener('DOMContentLoaded', function () {
             formData = new FormData(form)
 
         if (error === 0) {
+            let buttonText = form.querySelector('.short-form__submit').textContent
+
+            form.querySelector('.short-form__error-text').style.opacity = '0'
             let response = await fetch('sendmail.php', {
                 method: 'POST',
                 body: formData
             })
             if (response.ok) {
                 form.reset()
+
+                form.querySelector('.short-form__submit').textContent = 'Successfully sent'
+                form.querySelector('.short-form__submit').classList.add('short-form__submit_correct')
+                form.querySelector('.short-form__input_textarea').value = placeholder
+                setTimeout(() => {
+                    form.querySelector('.short-form__submit').textContent = buttonText
+                    form.querySelector('.short-form__submit').classList.remove('short-form__submit_correct')
+                }, 2000)
             } else {
-                alert('Oops... The form was not submitted.')
+                form.querySelector('.short-form__submit').textContent = 'Oops... The form was not submitted'
+                form.querySelector('.short-form__submit').classList.add('short-form__submit_error')
+                setTimeout(() => {
+                    form.querySelector('.short-form__submit').textContent = buttonText
+                    form.querySelector('.short-form__submit').classList.remove('short-form__submit_error')
+                }, 2000)
             }
         } else {
-            alert('Please, fill in all the fields in form')
+            form.querySelector('.short-form__error-text').style.opacity = '1'
         }
 
     }
