@@ -44,6 +44,10 @@ html, body {
   width: 75px;
   height: 67px;
   margin-right: 25px;
+  @media (max-width: 1025px) {
+    margin-right: 10px;
+  }
+
   @media (max-width: 769px) {
     width: 50px;
     height: 43px;

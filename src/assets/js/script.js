@@ -3,12 +3,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.header__burger').addEventListener('click', event => {
         document.querySelector('.header__menu').classList.toggle('header__menu_active')
-        if (document.querySelector('.header__menu').classList.contains('header__menu_active')) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = ''
-        }
+        checkMenuActive()
+
+        document.querySelector('.header__menu').querySelectorAll('.header__menu-item').forEach(menuItem => {
+            menuItem.addEventListener('click', event => {
+                document.querySelector('.header__menu').classList.remove('header__menu_active')
+                checkMenuActive()
+            })
+        })
     })
+
+
 
     let rentalPeriodInput = document.querySelector('.rental-period__input')
     calculatorRentalPeriod(rentalPeriodInput)
@@ -28,11 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
         formInput.onfocus = function () {
             if (formInput.value === placeholder) {
                 formInput.value = ''
+                formInput.classList.add('short-form__input_textarea_active')
             }
         }
         formInput.onblur = function () {
             if (formInput.value === '') {
                 formInput.value = placeholder
+                formInput.classList.remove('short-form__input_textarea_active')
             }
         }
     })
@@ -93,5 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
             formTextarea.classList.add('short-form__input_wrong')
         }
         return error
+    }
+
+    function checkMenuActive() {
+        if (document.querySelector('.header__menu').classList.contains('header__menu_active')) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
     }
 })
